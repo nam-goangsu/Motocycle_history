@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/HeadText"
+        style="@style/Head_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="지 난 연 비" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingTop="5dp">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/oneday_name"
+                style="@style/oneavg_default"
+
+                android:text="@string/onetime_liter" />
+
+            <TextView
+                android:id="@+id/textView1"
+                style="@style/oneavg_val"
+
+                android:layout_weight="2"
+                android:hint="@string/hint_avgliter" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/oneavg_default"
+                android:text="@string/onetime_gasliter" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/oneavg_val"
+                android:hint="@string/hint_avggasleter" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/oneavg_default"
+                android:text="@string/onetime_wonliter" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/oneavg_val"
+                android:hint="@string/hint_avgwonliter" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/oneavg_default"
+                android:text="@string/onetime_km" />
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/oneavg_val"
+                android:hint="@string/hint_avgkm" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

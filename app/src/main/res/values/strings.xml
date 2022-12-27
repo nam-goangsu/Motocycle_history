@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Moto_History</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+    <string name="onetime_liter">연비</string>
+    <string name="onetime_gasliter">주유량</string>
+    <string name="onetime_wonliter">리터당 가격</string>
+    <string name="onetime_km">주행거리</string>
+
+    <string name="hint_avgliter">km/L</string>
+    <string name="hint_avggasleter">주유량</string>
+    <string name="hint_avgwonliter">리터당 가격</string>
+    <string name="hint_avgkm">주유거리</string>
+
+
+
+
+
+    <string name="msg_n_Notdetail">상세 위치 허가하지 않았습니다.\n주유소 위치 조회 시, 오차범위가 발생할수 있습니다.</string>
+    <string name="msg_n_Notgps">위치 조회를 허가하지 않았습니다.\n주유소 위치 조회가 불가 합니다.</string>
+    <string name="msg_n_detail">상세 위치 조회 설정 하였습니다.\n주유소 위치 조회 시, 근접한 주유소 조회가 가능합니다.</string>
+
+    <string name="msg__Notdetail">상세 위치 허가하지 않았습니다. 주유소 위치 조회 시, 오차범위가 발생할수 있습니다.</string>
+    <string name="msg__Notgps">위치 조회를 허가하지 않았습니다. 주유소 위치 조회가 불가 합니다.</string>
+    <string name="msg__detail">상세 위치 조회 설정 하였습니다. 주유소 위치 조회 시, 근접한 주유소 조회가 가능합니다.</string>
+
+    <string name="title_log">주행 기록</string>
+    <string name="title_change">유지 보수</string>
+    <string name="title_gas">주유</string>
+    <string name="title_setting">설정</string>
+
+    <string name="defalt_info">정 보 입 력</string>
+    <string name="dialog_next_text">다 음</string>
+    <string name="dialog_save_text">저 장</string>
+
+    <string name="Car_infor">차량 정보</string>
+    <string name="Car_model">모델명</string>
+
+    <string name="avg_mileage">평균 연비</string>
+    <string name="avg_price">평균 단가</string>
+    <string name="avg_killro">평균 주행거리</string>
+
+    <string name="now_mileage">최근 연비</string>
+    <string name="now_price">최근 단가</string>
+    <string name="now_killro">최근 주행거리</string>
+
+    <string name="name_maker">제조사</string>
+    <string name="price">단가</string>
+    <string name="ODD">누적 주행거리</string>
+    <string name="killro">주행거리</string>
+
+    <string name="change_part">교체 부품</string>
+    <string name="gas_tank">주유탱크 용량(L)</string>
+    <string name="gas_tank_max">주유 탱크 최대 칸</string>
+    <string name="gas_tank_alrt">주유 경고등 칸</string>
+    <string name="MILEAGE_dan">Km/L</string>
+    <string name="MILEAGE_won">원</string>
+    <string name="MILEAGE_km">Km</string>
+
+    <string name="Menu_del">삭제</string>
+    <string name="Menu_edit">수정</string>
+
+    <string name="slider_desc">ettw</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="dialog_cancel_text">취 소</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+</resources>

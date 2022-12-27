@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="2">
+
+    <TextView
+        android:text="@string/Car_model"
+        style="@style/Defalt_data_name"
+        />
+
+    <EditText
+        android:id="@+id/input_model"
+        android:ems="10"
+        android:hint="@string/Car_model"
+        android:inputType="text"
+        style="@style/Defalt_data_input"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        style="@style/Defalt_data_name"
+        android:text="@string/name_maker" />
+
+    <EditText
+        android:id="@+id/input_maker"
+        android:ems="10"
+        android:hint="@string/name_maker"
+        android:inputType="text"
+        style="@style/Defalt_data_input"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        style="@style/Defalt_data_name"
+        android:text="배기량" />
+
+    <EditText
+        android:id="@+id/input_CC"
+        android:ems="10"
+        android:hint="배기량 CC"
+        android:maxLength="4"
+        android:inputType="numberDecimal"
+        style="@style/Defalt_data_input"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+
+        style="@style/Defalt_data_name"
+        android:text="@string/ODD" />
+
+    <EditText
+        android:id="@+id/input_odd"
+        android:ems="10"
+        android:hint="@string/ODD"
+        android:inputType="numberDecimal"
+        style="@style/Defalt_data_input"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+
+        style="@style/Defalt_data_name"
+        android:text="@string/gas_tank" />
+
+    <EditText
+        android:id="@+id/input_maxtankliter"
+        android:ems="2"
+        android:maxLength="2"
+        android:hint="카탈로그상 최대 주유량"
+        android:inputType="number"
+        style="@style/Defalt_data_input"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+
+        style="@style/Defalt_data_name"
+        android:text="@string/gas_tank_max" />
+
+    <EditText
+        android:id="@+id/input_maxtankkan"
+        android:ems="2"
+        android:hint="계기판에 표기 되는 최대 칸"
+        android:inputType="number"
+        android:text="8"
+        android:maxLength="2"
+        style="@style/Defalt_data_input"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <TextView
+
+        style="@style/Defalt_data_name"
+        android:text="@string/gas_tank_alrt" />
+
+    <EditText
+        android:id="@+id/input_alttankkan"
+        style="@style/Defalt_data_input"
+        android:ems="1"
+        android:maxLength="1"
+        android:text="2"
+        android:hint="주유 경고등이 뜨는 칸수"
+        android:inputType="number"
+        tools:ignore="TouchTargetSizeCheck" />
+</GridLayout>
