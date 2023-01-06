@@ -1,4 +1,4 @@
-package pol3436.test.moto_history.Model
+package pol3436.test.moto_history.Data
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -28,6 +28,8 @@ class Converters {
         return value?.let { Date(it!!) }
     }
 */
+
+
     @TypeConverter
     fun dateToTimestamp(date: Date?): Long? {
         return date?.time?.toLong()

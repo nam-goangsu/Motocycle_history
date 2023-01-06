@@ -8,11 +8,9 @@
     <TextView
         android:id="@+id/HeadText"
         style="@style/Head_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="지 난 연 비" />
+        android:text="@string/head_ones" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -20,24 +18,18 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"
-        android:paddingTop="5dp">
-
-
+        android:padding="10dp">
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <TextView
                 android:id="@+id/oneday_name"
                 style="@style/oneavg_default"
-
                 android:text="@string/onetime_liter" />
-
             <TextView
                 android:id="@+id/textView1"
                 style="@style/oneavg_val"
 
-                android:layout_weight="2"
                 android:hint="@string/hint_avgliter" />
         </TableRow>
 
@@ -61,6 +53,7 @@
             android:layout_height="match_parent">
 
             <TextView
+            android:ellipsize="marquee"
                 android:id="@+id/textView4"
                 style="@style/oneavg_default"
                 android:text="@string/onetime_wonliter" />

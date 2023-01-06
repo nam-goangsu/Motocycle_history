@@ -5,56 +5,94 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import pol3436.test.moto_history.Model.DataClass.Defalt_Data
-import pol3436.test.moto_history.Model.Net_data
-import pol3436.test.moto_history.Model.Uri.Uri_data
-import pol3436.test.moto_history.Model.Vo.Sido_vo
+import pol3436.test.moto_history.CustomDialog
+import pol3436.test.moto_history.Repository.ShareData
 import pol3436.test.moto_history.databinding.FragmentHomeBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import kotlin.properties.Delegates
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var mDefaltViewModel: HomeViewModel
+    private lateinit var spinner: Spinner
+    private var arraylist_spinner  = arrayListOf<String>()
+    private lateinit var adapter1 : ArrayAdapter<String>
+    private var lastselect:String=ShareData.prefs.getString("DD_Model","")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mDefaltViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
     }
 
+
+    //bike_select //(val string_array
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        spinner = binding.spinner
 
-        mDefaltViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+       adapter1 = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item,arraylist_spinner)
 
-
-        mDefaltViewModel.readAllData.observe(
+        mDefaltViewModel.spinnerData.observe(
             viewLifecycleOwner,
             Observer { Defalt_Data ->
                 if (Defalt_Data.isEmpty()) {
+         /*           val dialog = CustomDialog(requireContext())
+                    dialog.showDia()*/
                     // 기본 데이터 추가 화면 실행
                 } else {
-                    //.setData(Defalt_Data)
-                    // 아닌경우 화면 노출
+                    adapter1 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    spinner.adapter = adapter1
+                    arraylist_spinner.clear()
+                    arraylist_spinner.addAll(Defalt_Data)
+                    adapter1.notifyDataSetChanged()
+                    Log.d("test" , " select  string: "+ lastselect.toString())
+                    var match :Int = arraylist_spinner.indexOfFirst{it.equals(lastselect)}
+
+                    Log.d("test" , " select index: "+ match.toString())
+                    spinner.setSelection(match)
+
+
+
                 }
             }
         )
+        mDefaltViewModel.select_Gasinput_carname(lastselect).observe(
+            viewLifecycleOwner,Observer
+            {
+                   it.let {
+                        Log.d("test" , " select" + it.toString())
+                       println(it.toString())
+                    }
+            }
 
+        )
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Log.d("test" , " select spinner : "+ arraylist_spinner[position].toString())
+              ShareData.prefs.setString("DD_Model",arraylist_spinner[position])
+                // 선택한 차량 모델의 주유정보 노출
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+        }
 
 
         return binding!!.root

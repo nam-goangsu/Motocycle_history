@@ -10,19 +10,21 @@ import androidx.room.*
 data class Defalt_Data(
     @PrimaryKey(autoGenerate = true) //primary key는 자동으로 만들게 합니다.
     @ColumnInfo @NonNull
-    val rowid: Long,
+    val rowid: Int,
     val Car_Name: String,
     val Car_Maker: String,
+    val Car_CC: Int,
     val Car_Type: String,
+    val Start_Odd:Long,
     val Car_TankLiter: Int,// =0,
-    val Car_TankEmerLiter: Int,// =0,
     val Car_TankMaxKan: Int,// =8,
     val Car_TankReChargeKan: Int,// =2,
+    val Car_TankEmerLiter: Int,// =0,
     val Car_AvgType: String,// = ,
-    val Gps_GetCheck: Boolean,
-    val Opnet_GetCheck: Boolean,
-    var image: Bitmap? = null,
-   // @Ignore var Image : Bitmap? = null
+    val Gps_GetCheck: Boolean = false,
+    val Opnet_GetCheck: Boolean= false,
+    /*var Image: Bitmap? = null*/
+    val Image : Bitmap
 )
 
 

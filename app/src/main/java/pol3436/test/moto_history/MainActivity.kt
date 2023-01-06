@@ -1,41 +1,45 @@
 package pol3436.test.moto_history
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build
+
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import pol3436.test.moto_history.Repository.ShareData
 import pol3436.test.moto_history.databinding.ActivityMainBinding
 import pol3436.test.moto_history.utill.AppUtill
+import pol3436.test.moto_history.utill.LayoutUtill
+import pol3436.test.moto_history.utill.Permission
 
+/*
+* 작업 필요 내용
+* 1. app 한번 실행 여부 // 쉐어 false
+* 2. 퍼미션
+* 3. db 생성 체크
+*/
 
 class MainActivity : AppCompatActivity() {
     companion object {
         const val REQUEST_CODE_PERMISSIONS = 1001
     }
-
-    private val permissions = arrayOf(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.CAMERA
-    )
-
+    private var Default_Dataset : Boolean =
+        ShareData.prefs.getBoolean("DefaltData",false)
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Default_Dataset == false) {
+            ShareData.prefs.setBoolean("DefaltData", false) // 이후 값이 넣어진 경우 true
+            val dialog = CustomDialog(this)
+            dialog.showDia()
+        }
 
-
-        if(AppUtill(this).checkPermission(permissions)){
-            requestPermissions(permissions, REQUEST_CODE_PERMISSIONS)
+        if(AppUtill(this).checkPermission(Permission.permissionsList)){
+            requestPermissions(Permission.permissionsList, REQUEST_CODE_PERMISSIONS)
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -48,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                 R.id.navigation_dashboard,R.id.navigation_home, R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -62,55 +66,5 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        when (requestCode) {
-            REQUEST_CODE_PERMISSIONS -> {
-                if (grantResults.all {it == PackageManager.PERMISSION_GRANTED}) {
-
-                } else {
-
-                    if (grantResults.any { it == PackageManager.PERMISSION_DENIED }) {// 1개라도 TRUE인경우
-                        lateinit var mText : Map<String, String>
-
-                        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
-                            mText = mapOf("상세 미허가" to stringPrint(R.string.msg_n_Notdetail),"위치 미허가" to stringPrint(R.string.msg_n_Notgps),"상세 허가" to stringPrint(R.string.msg_n_detail) )
-                        }else{
-                            mText = mapOf("상세 미허가" to stringPrint(R.string.msg__Notdetail),"위치 미허가" to stringPrint(R.string.msg__Notgps),"상세 허가" to stringPrint(R.string.msg__detail) )
-                        }
-
-
-                            if (grantResults.get(0) == PackageManager.PERMISSION_DENIED && grantResults.get(1) == PackageManager.PERMISSION_GRANTED) {
-                                AppUtill(this, (mText.get("상세 미허가")).toString() , Gravity.CENTER_VERTICAL, 0, 0)
-                            } else if (grantResults.get(0) == PackageManager.PERMISSION_DENIED && grantResults.get(1) == PackageManager.PERMISSION_DENIED) {
-                                AppUtill(this, (mText.get("위치 미허가")).toString() , Gravity.CENTER_VERTICAL, 0, 0)
-                            } else if (grantResults.get(0) == PackageManager.PERMISSION_GRANTED && grantResults.get(1) == PackageManager.PERMISSION_DENIED) {
-                                AppUtill(this, (mText.get("상세 허가")).toString() , Gravity.CENTER_VERTICAL, 0, 0)
-                            } else if (grantResults.get(2) == PackageManager.PERMISSION_DENIED) {
-                                Toast.makeText(this, "카메라를 사용하지 않습니다.", Toast.LENGTH_SHORT).show()
-                            }
-
-
-                    } else {
-                        Toast.makeText(this, "reject", Toast.LENGTH_SHORT).show()
-                    }
-//https://velog.io/@jaeyunn_15/Android-Android-%EC%9C%84%EC%B9%98-%EA%B6%8C%ED%95%9C-%EB%B3%80%EA%B2%BD-%EC%82%AC%ED%95%AD
-//https://debbi.tistory.com/31
-
-                }
-            }
-        }
-    }
-
-
-
-    fun stringPrint(mid:Int):String {
-        var print_string =resources.getString(mid)
-        return print_string.toString()
-    }
 }

@@ -3,19 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Moto_History/app/src/main/res/drawable-v24/button_leftround.xml" value="0.2355" />
+        <entry key="..\:/Moto_History/app/src/main/res/drawable-v24/button_rightround.xml" value="0.282" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1775" />
+        <entry key="..\:/Moto_History/app/src/main/res/drawable-v24/item_outline.xml" value="0.2355" />
+        <entry key="..\:/Moto_History/app/src/main/res/drawable-v24/round_dialog.xml" value="0.2355" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1775" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1775" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1775" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1775" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable/val_inbox.xml" value="0.231" />
         <entry key="..\:/Moto_History/app/src/main/res/drawable/val_rinbox.xml" value="0.325" />
+        <entry key="..\:/Moto_History/app/src/main/res/layout-land/fragment_home.xml" value="0.30833333333333335" />
+        <entry key="..\:/Moto_History/app/src/main/res/layout/Dialog_new_moto_type.xml" value="0.33" />
         <entry key="..\:/Moto_History/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Moto_History/app/src/main/res/layout/activity_main_avgdata.xml" value="0.25" />
+        <entry key="..\:/Moto_History/app/src/main/res/layout/activity_main_avgdata.xml" value="0.33" />
         <entry key="..\:/Moto_History/app/src/main/res/layout/defaltdata_input.xml" value="0.5" />
         <entry key="..\:/Moto_History/app/src/main/res/layout/fragment_dashboard.xml" value="0.19074074074074074" />
-        <entry key="..\:/Moto_History/app/src/main/res/layout/fragment_home.xml" value="0.44533558463486705" />
+        <entry key="..\:/Moto_History/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Moto_History/app/src/main/res/layout/fragment_notifications.xml" value="0.19074074074074074" />
+        <entry key="..\:/Moto_History/app/src/main/res/layout/recyclerview_change_long.xml" value="0.33" />
+        <entry key="..\:/Moto_History/app/src/main/res/layout/recyclerview_change_nomal.xml" value="0.44364710848459266" />
       </map>
     </option>
   </component>

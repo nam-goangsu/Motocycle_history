@@ -14,8 +14,8 @@
     <string name="hint_avggasleter">주유량</string>
     <string name="hint_avgwonliter">리터당 가격</string>
     <string name="hint_avgkm">주유거리</string>
-
-
+    <string name="head_ones">이 전 주 유 연 비</string>
+    <string name="head_avg">누 적 총 연 비</string>
 
 
 
@@ -56,10 +56,16 @@
     <string name="gas_tank">주유탱크 용량(L)</string>
     <string name="gas_tank_max">주유 탱크 최대 칸</string>
     <string name="gas_tank_alrt">주유 경고등 칸</string>
+    <string name="gas_tank_alrtLiter">주유 경고등 Liter</string>
+    <string name="avg_Type">연비 표기 종류</string>
     <string name="MILEAGE_dan">Km/L</string>
-    <string name="MILEAGE_won">원</string>
+    <string name="MILEAGE_won">원(\\)</string>
     <string name="MILEAGE_km">Km</string>
-
+    <string name="Gps_get">GPS 연결</string>
+    <string name="opinet_get">오피넷 연결</string>
+    <string name="gar_get">갤러리</string>
+    <string name="camera_get">카메라</string>
+    <string name="picher_get">사진 설정</string>
     <string name="Menu_del">삭제</string>
     <string name="Menu_edit">수정</string>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bike_type">
+        <item>스쿠터</item>
+        <item>체인</item>
+        <item>벨트(할리)</item>
+        <item>샤프트</item>
+    </string-array>
+    <string-array name="avg_type">
+
+        <item>Km/L</item>
+        <item>100Km/L</item>
+    </string-array>
+
+    <string-array name="bike_select">
+    <item>선택하세요</item>
+    </string-array>
+
+
+
+</resources>

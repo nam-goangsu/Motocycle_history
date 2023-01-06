@@ -14,9 +14,9 @@
     <style name="Defalt_data_name">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_weight">0.3</item>
         <item name="android:minHeight">40dp</item>
-        <item name="android:minWidth">110dp</item>
+        <item name="android:minWidth">60dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">fill</item>
         <item name="android:textStyle">bold</item>
@@ -28,10 +28,9 @@
     <style name="Defalt_data_input">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_weight">0.7</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">fill</item>
-
         <item name="android:textStyle">bold</item>
         <item name="android:autoSizeMinTextSize">14dp</item>
         <item name="android:autoSizeMaxTextSize">17dp</item>
@@ -41,9 +40,9 @@
     <style name="Head_textview">
         <item name="android:minWidth">200dp</item>
         <item name="android:maxWidth">350dp</item>
-        <item name="android:minHeight">35dp</item>
-        <item name="android:maxHeight">100dp</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minHeight">60dp</item>
+        <item name="android:maxHeight">150dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingEnd">10dp</item>
@@ -51,39 +50,87 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">@dimen/main_avg_head</item>
         <item name="android:textStyle">bold</item>
     </style>
 
 
     <style name="oneavg_default">
-        <item name="android:minWidth">100dp</item>
+        <item name="android:minWidth">120dp</item>
         <item name="android:maxWidth">150dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingEnd">10dp</item>
-        <item name="android:paddingStart">10dp</item>
-        <item name="android:paddingBottom">5dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:maxHeight">100dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingBottom">10dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:ellipsize">marquee</item>
         <item name="android:background">@drawable/val_inbox</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:layout_weight">0.3</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/main_avg_body</item>
     </style>
 
     <style name="oneavg_val">
 
         <item name="android:maxWidth">200dp</item>
         <item name="android:minWidth">130dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingEnd">10dp</item>
-        <item name="android:paddingStart">10dp</item>
-        <item name="android:paddingBottom">5dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:maxHeight">100dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingBottom">10dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:ellipsize">marquee</item>
         <item name="android:background">@drawable/val_rinbox</item>
-        <item name="android:layout_weight">2</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:layout_weight">0.7</item>
+        <item name="android:textSize">@dimen/main_avg_body</item>
+    </style>
+
+    <style name="Dialog_title">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">35dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/item_outline</item>
+        <item name="android:shadowColor">@color/c55524D</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">3</item>
+        <item name="minHeight">75dp</item>
+    </style>
+    <style name="Dialog_select_button">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:bottomLeftRadius">5dp</item>
+        <item name="android:background">@color/c333333</item>
+        <item name="android:shadowColor">@color/cFFFFFF</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">1</item>
+
+    </style>
+    <style name="Dialog_cancel_button">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:bottomLeftRadius">5dp</item>
+        <item name="android:background">@drawable/button_leftround</item>
+        <item name="android:shadowColor">#FBAC4C</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">1</item>
     </style>
 </resources>
