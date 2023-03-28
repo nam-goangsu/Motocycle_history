@@ -5,10 +5,11 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
- 
+import kotlinx.android.parcel.Parcelize
+
 import java.util.*
 
-
+ 
 @Entity(tableName = "SigunGasStation")//, primaryKeys = ["rowid"])
 data class SigunGasStation(
     @PrimaryKey(autoGenerate = true) //primary key는 자동으로 만들게 합니다.

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="pol3436.test.moto_history">
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -17,18 +16,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moto_History"
         android:name=".Repository.ShareData"
+        android:launchMode="singleTask"
         tools:targetApi="31">
+
         <!--android:name=".Model.Net_data"-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SetupActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:launchMode="singleTop"
+            />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="pol3436.test.moto_history.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
 
 </manifest>

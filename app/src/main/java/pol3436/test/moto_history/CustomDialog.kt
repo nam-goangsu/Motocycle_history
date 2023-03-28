@@ -2,22 +2,29 @@ package pol3436.test.moto_history
 
 import android.app.Dialog
 import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
+import android.view.View
 import android.view.WindowManager
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import pol3436.test.moto_history.Data.GasDatabase
 import pol3436.test.moto_history.Model.DataClass.Defalt_Data
+import pol3436.test.moto_history.Repository.GasRepository
 import pol3436.test.moto_history.Repository.ShareData
 import pol3436.test.moto_history.utill.LayoutUtill
 
@@ -53,33 +60,21 @@ class CustomDialog(context: Context) {
 
 
     private lateinit var get_picture: Button
+    private lateinit var get_gallery: Button
     private lateinit var cancel_btn: Button
     private lateinit var save_btn: Button
     private lateinit var textmodel: TextWatcher
     private lateinit var getstring: Array<String>
-    private var bigPictureBitmap : Bitmap? = BitmapFactory.decodeResource(context.resources, R.drawable.noimg)
-/*
-    private val model_text: EditText by lazy { dialog.findViewById<EditText>(R.id.input_model) }
-    private val maker_text: EditText by lazy { dialog.findViewById<EditText>(R.id.input_maker) }
-    private val cc_text: EditText by lazy { dialog.findViewById<EditText>(R.id.input_CC) }
-    private val odd_text: EditText by lazy { dialog.findViewById<EditText>(R.id.input_odd) }
-    private val maxliter_text: EditText by lazy { dialog.findViewById<EditText>(R.id.input_maxtankliter) }
-    private val maxtank_text: EditText by lazy { dialog.findViewById<EditText>(R.id.input_maxtankkan) }
-    private val alttankkan: EditText by lazy { dialog.findViewById<EditText>(R.id.input_alttankkan) }
-    private val alttankliter: EditText by lazy { dialog.findViewById<EditText>(R.id.input_alttankliter) }
+    private  var get_time : Long =System.currentTimeMillis()
 
-    private val bike_type: Spinner by lazy { dialog.findViewById<Spinner>(R.id.bike_type) }
-    private val avgtype: Spinner by lazy { dialog.findViewById<Spinner>(R.id.input_avgtype) }
-
-    private val gps_check: CheckBox by lazy { dialog.findViewById<CheckBox>(R.id.gps_check) }
-    private val opnet_check: CheckBox by lazy { dialog.findViewById<CheckBox>(R.id.opnet_check) }
-
-
-    private val get_picture: Button by lazy { dialog.findViewById<Button>(R.id.get_picture) }
-    private val cancel_btn: Button by lazy { dialog.findViewById<Button>(R.id.dialog_cancel) }
-    private val save_btn: Button by lazy { dialog.findViewById<Button>(R.id.dialog_select) }*/
+    companion object {
+        lateinit var bigPictureBitmap: Bitmap
+    }
 
     fun showDia() {
+
+
+        bigPictureBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.noimg)
         dialog.setContentView(R.layout.dialog_new_moto_type)
 
         dialog.apply {
@@ -97,11 +92,13 @@ class CustomDialog(context: Context) {
 
             gps_check = findViewById<CheckBox>(R.id.gps_check)
             opnet_check = findViewById<CheckBox>(R.id.opnet_check)
-
+            get_gallery = findViewById<Button>(R.id.get_picture2)
             get_picture = findViewById<Button>(R.id.get_picture)
             cancel_btn = findViewById<Button>(R.id.dialog_cancel)
             save_btn = findViewById<Button>(R.id.dialog_select)
 
+            get_gallery.setOnClickListener (buttonclickListener())
+            get_picture.setOnClickListener (buttonclickListener())
 
             if (LayoutUtill.width > 1200) {
                 Log.d("test","get layout wed size : "+ LayoutUtill.width)
@@ -147,6 +144,8 @@ class CustomDialog(context: Context) {
 
         dialog.show()
 
+
+
     }
 
 
@@ -161,6 +160,7 @@ class CustomDialog(context: Context) {
 
             override fun afterTextChanged(editable: Editable) {
 //   if (grantResults.all {it == PackageManager.PERMISSION_GRANTED}) {
+                Log.d("tes" , "test time " + get_time)
                 if (editable.length > 0) {
                     getstring = arrayOf(
                         model_text!!.text.toString(),maker_text!!.text.toString(),cc_text!!.text.toString(),
@@ -177,9 +177,9 @@ class CustomDialog(context: Context) {
                            .isNullOrBlank() and tankkan!!.text.toString().isNullOrBlank() and
                        alttankliter!!.text.toString().isNullOrBlank() and gps_check!!.text.toString()
                            .isNullOrBlank()
-                   )*/
-
-                    /*      if (!model_text!!.text.toString().isNullOrBlank()
+                   )
+                        //
+                        if (!model_text!!.text.toString().isNullOrBlank()
                               and !maker_text!!.text.toString().isNullOrBlank()
                               and !cc_text!!.text.toString().isNullOrBlank()
                               and !odd_text!!.text.toString().isNullOrBlank()
@@ -203,20 +203,58 @@ class CustomDialog(context: Context) {
             }
         }
     }
+    private val takePhotoFromAlbumIntent =
+        Intent(Intent.ACTION_GET_CONTENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).apply {
+            type = "image/*"
+            action = Intent.ACTION_GET_CONTENT
+            putExtra(
+                Intent.EXTRA_MIME_TYPES,
+                arrayOf("image/jpeg", "image/png", "image/bmp", "image/webp")
+            )
+            putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false)
+        }
+
+    @Suppress("DEPRECATION", "NewApi")
+    private fun Uri.parseBitmap(context: Context): Bitmap {
+        return when (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) { // 28
+            true -> {
+                val source = ImageDecoder.createSource(context.contentResolver, this)
+                ImageDecoder.decodeBitmap(source)
+            }
+            else -> {
+                MediaStore.Images.Media.getBitmap(context.contentResolver, this)
+            }
+        }
+    }
+
+    inner class buttonclickListener : View.OnClickListener{
+        override fun onClick(v: View?) {
+            when(v?.id){
+                R.id.get_picture-> {
+
+
+                }
+                R.id.get_picture2-> {
+                    takePhotoFromAlbumIntent
+                }
+            }
+        }
+
+    }
     fun cancelbutton() {
         cancel_btn!!.setOnClickListener {
             toast.setGravity(Gravity.CENTER, 0, 0)
             toast.show()
-            ShareData.prefs.setBoolean("DefaltData", false) // 이후 값이 넣어진 경우 true
             Thread.sleep(1000L)
             dialog.dismiss()
-
             System.exit(0)
-
         }
     }
 
     fun saveDataButton() {
+        val repository: GasRepository
+        val gasDao = GasDatabase.getDatabase(context).gasDao()
+        repository = GasRepository(gasDao)
 
         save_btn!!.setOnClickListener {
             default_data = Defalt_Data(
@@ -233,18 +271,20 @@ class CustomDialog(context: Context) {
                 avgtype!!.selectedItem.toString(),
                 gps_check!!.isChecked,
                 opnet_check!!.isChecked,
-                bigPictureBitmap!!
+                bigPictureBitmap!!,
+                get_time
             )
             CoroutineScope(Dispatchers.IO).launch {
-                db.gasDao().add_DefaltData( //23-01-03 06:05 db 연동 잡아야지
+                repository.insert_defalt_data(default_data)
+                /*db.gasDao().add_DefaltData( //23-01-03 06:05 db 연동 잡아야지
                     default_data
-                )
+                )*/
             }
-
             ShareData.prefs.setString("DD_Model",model_text!!.text.toString() )
-
             ShareData.prefs.setBoolean("DefaltData", true)
             dialog.dismiss()
         }
     }
+
+
 }

@@ -6,7 +6,8 @@ import androidx.annotation.NonNull
 import androidx.room.*
 import java.util.*
 import androidx.room.PrimaryKey
- 
+import kotlinx.android.parcel.Parcelize
+
 
  
 // 주유내역
@@ -18,6 +19,8 @@ data class Gas_InputList(
     val rowid: Long,
     var Car_Name: String = "",
     var Date : Date=Date(),
+    var year: Int? = null,
+    var month: Int? = null,
     var ODD : Int=0,
     var Liter : Long=0,
     var Won : Int=0,
@@ -30,7 +33,11 @@ data class Gas_InputList(
     var Gps_Long: Float=0.0f,
     var GIS_X_COOR: Float=0.0f, // gis 좌표
     var GIS_Y_COOR: Float=0.0f,
-    var Etc :String="",var image: Bitmap? = null,/*,
+    var Etc :String="",
+    var image: Bitmap? = null,
+
+
+    /*,
       @Ignore   var Image :Bitmap?=null*/
 ) 
 

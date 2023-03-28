@@ -1,6 +1,7 @@
 package pol3436.test.moto_history.Data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import androidx.room.Dao
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +18,13 @@ interface GasDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun add_DefaltData(DefaltData: Defalt_Data)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun add_Sido(vararg sido: Sido_code)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun add_SigunCode(vararg SigunCode: Sigun_code)
+
+/*
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun add_ChangeItem(changeItem: Change_Item)
@@ -34,29 +42,29 @@ interface GasDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun add_SevenDayPrice(SevenDayPrice: SevenDayPrice)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun add_Sido(sido: Sido)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun add_SigunCode(SigunCode: Sigun_code)
 
     @Insert(onConflict = OnConflictStrategy.ROLLBACK)
     fun add_SigunGasStation(sigunGasStation: SigunGasStation)
 
     @Insert(onConflict = OnConflictStrategy.ROLLBACK)
     fun add_SigunLowprice(sigunLowPrice: SigunLowPrice)
+*/
 
     //삽입 종료
 
     //갱신시작
+    @Update
+    suspend fun update_DefaltData(DefaltData: Defalt_Data)
+    /*
+
     @Update
     fun update_AllGasStation(vararg allGasStation: AllGasStation)
 
     @Update
     fun update_ChangeItem(vararg changeItem: Change_Item)
 
-    @Update
-    suspend fun update_DefaltData(DefaltData: Defalt_Data)
+
 
     @Update
     fun update_DefaltDataItem(vararg DefaltDataItem: Defalt_Data_Item)
@@ -80,7 +88,7 @@ interface GasDao {
     fun update_SigunGasStation(vararg sigunGasStation: SigunGasStation)
 
     @Update
-    fun update_SigunLowprice(vararg sigunLowPrice: SigunLowPrice)
+    fun update_SigunLowprice(vararg sigunLowPrice: SigunLowPrice)*/
     //갱신끝
 
 
@@ -92,12 +100,24 @@ interface GasDao {
     @Query("SELECT * FROM Change_Item ORDER BY rowid DESC")   /// DESC LIMIT 1(내림차순 정리후 1개만 뺴는
     fun select_ChangeItem(): LiveData<List<Change_Item>>*/
 
-    @Query("SELECT * FROM  Gas_InputList WHERE Car_Name = :carname ORDER BY rowid DESC")
-    fun select_DefaltDate(carname: String): Flow<List<Gas_InputList>>
 
 
-    @Query("SELECT Car_Name FROM Defalt_Data ORDER BY rowid ASC")
+    //select DISTINCT SigunCode -> 중복 제거 리스트업
+/*    @Query("SELECT * FROM  Defalt_Data WHERE Car_Name = :carname ORDER BY rowid DESC")
+    fun select_DefaltDate(carname: String): LiveData<List<Defalt_Data>>*/
+    @Query("SELECT Car_Name FROM Defalt_Data ORDER BY rowid")
     fun spinnerData(): LiveData<List<String>>
+    @Query("SELECT * FROM Defalt_Data ORDER BY rowid ASC")
+    fun spinnerData1(): LiveData<List<Defalt_Data>>
+   @Query("SELECT * FROM Sido_List ORDER BY rowid ASC")
+    fun sido_code(): List<Sido_code>  // livedata가 아닌 이유 viewmodel 외부에서 코루틴으로 돌아감
+
+    //SELECT * FROM Sigun_List WHERE SidoName = "서울" ORDER BY SidoCode  ASC
+    /*
+    @Query("SELECT * FROM Sigun_List ORDER BY rowid ASC")
+    fun sigun_code(): List<Sigun_code>*/
+
+
     /*
 
        @Query("SELECT * FROM Defalt_Data ORDER BY rowid =:id DESC")
@@ -149,7 +169,11 @@ interface GasDao {
     */
     @Delete
     fun del_DefaltData(DefaltData: Defalt_Data)
-
+    @Delete
+    fun del_SidoData(vararg sido_code: Sido_code)
+    @Delete
+    fun del_SigunData(vararg sigun_code: Sigun_code)
+/*
     @Delete
     fun del_DefaltDataItem(vararg DefaltDataItem: Defalt_Data_Item)
 
@@ -172,9 +196,10 @@ interface GasDao {
     fun del_SigunGasStation(vararg sigunGasStation: SigunGasStation)
 
     @Delete
-    fun del_SigunLowprice(vararg sigunLowPrice: SigunLowPrice)
+    fun del_SigunLowprice(vararg sigunLowPrice: SigunLowPrice)*/
 
     //전체 삭제 끝
+/*
 
     @Query("DELETE FROM Sido_List WHERE SidoCode =:SidoCode")
     fun dels_sido_Data(SidoCode: Int): Int
@@ -184,6 +209,7 @@ interface GasDao {
 
     @Query("DELETE FROM Defalt_Data WHERE rowid =:Car_id")
     fun dels_DefaltUser_Data(Car_id: Int): Int
+*/
 
 
 /*

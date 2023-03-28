@@ -6,9 +6,10 @@ import androidx.annotation.NonNull
 import androidx.room.*
 import java.util.*
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
+
+
  
-
-
 /*@Fts4*/
 @Entity(tableName = "Defalt_Data_Item")//,primaryKeys  = ["rowid"])//,indices = [Index(varue = ["Car_Name","Item_Name"])])
 data class Defalt_Data_Item(

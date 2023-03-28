@@ -3,6 +3,8 @@ package pol3436.test.moto_history.Data
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.room.TypeConverter
+import com.google.gson.Gson
+import pol3436.test.moto_history.Model.DataClass.Sido_code
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -22,12 +24,10 @@ class Converters {
     }
 
 // 날짜 정보를 data 포멧으로 변경
-/*
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it!!) }
     }
-*/
 
 
     @TypeConverter
@@ -35,9 +35,15 @@ class Converters {
         return date?.time?.toLong()
     }
     @TypeConverter
+    fun listToJson(value: List<Sido_code>?) = Gson().toJson(value)
+
+    @TypeConverter
+    fun jsonToList(value: String) = Gson().fromJson(value, Array<Sido_code>::class.java).toList()
+    //currentTimeMillis
+/*    @TypeConverter
     fun toDate(millisSinceEpoch: Long?): Date? {
         return millisSinceEpoch?.let {
             Date(it!!)
         }
-    }
+    }*/
 }

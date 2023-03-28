@@ -13,13 +13,11 @@ import pol3436.test.moto_history.Model.DataClass.*
     */
 @Database(entities =[Defalt_Data::class,AllGasStation::class,Change_Item::class,Defalt_Data_Item::class,
     Gas_InputList::class,RadiusGasStation::class,SevenDayPrice::class,
-    Sido::class,Sigun_code::class, SigunGasStation::class,SigunLowPrice::class],version = 1, exportSchema = false)
+    Sido_code::class, Sigun_code::class, SigunGasStation::class,SigunLowPrice::class],version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class GasDatabase : RoomDatabase() {
 
     abstract fun gasDao(): GasDao
-
-
 
     companion object{
         @Volatile //다른 thread에서 접근 가능하게 만드는 것입니다.

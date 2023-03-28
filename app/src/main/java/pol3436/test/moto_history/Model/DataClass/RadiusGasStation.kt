@@ -3,7 +3,7 @@ package pol3436.test.moto_history.Model.DataClass
 import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.*
- 
+import kotlinx.android.parcel.Parcelize
 
 
  

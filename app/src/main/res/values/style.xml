@@ -50,13 +50,17 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">22dp</item>
+        <item name="android:autoSizeMaxTextSize">26dp</item>
+        <item name="android:autoSizeStepGranularity">2dp</item>
         <item name="android:textSize">@dimen/main_avg_head</item>
         <item name="android:textStyle">bold</item>
     </style>
 
 
     <style name="oneavg_default">
-        <item name="android:minWidth">120dp</item>
+        <item name="android:minWidth">100dp</item>
         <item name="android:maxWidth">150dp</item>
         <item name="android:minHeight">30dp</item>
         <item name="android:maxHeight">100dp</item>
@@ -79,7 +83,7 @@
         <item name="android:maxWidth">200dp</item>
         <item name="android:minWidth">130dp</item>
         <item name="android:minHeight">30dp</item>
-        <item name="android:maxHeight">100dp</item>
+        <item name="android:maxHeight">120dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingTop">10dp</item>

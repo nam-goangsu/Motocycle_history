@@ -5,10 +5,10 @@ import androidx.annotation.NonNull
 import androidx.room.*
 import java.util.*
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 
-
-
+ 
 @Entity(
     tableName = "Change_Item"
 )

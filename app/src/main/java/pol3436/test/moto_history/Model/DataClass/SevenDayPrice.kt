@@ -6,9 +6,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Fts4
 import androidx.room.PrimaryKey
- 
-import java.util.*
+import kotlinx.android.parcel.Parcelize
 
+import java.util.*
+ 
 //@Fts4
 @Entity(tableName = "SevenDayPrice")//,primaryKeys  = ["rowid"])
 data class SevenDayPrice( // 최근 7일간 전국 일일편균가격

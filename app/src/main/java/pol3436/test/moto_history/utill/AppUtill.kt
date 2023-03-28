@@ -5,13 +5,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 
 import pol3436.test.moto_history.R
-
 
 
 class AppUtill(context: Context? ) {
@@ -25,12 +23,13 @@ class AppUtill(context: Context? ) {
         this.mContext = context!!
     }
 
-    fun checkPermission(permissions:  Array<String>): Boolean {
+    fun checkPermission(permissions: Array<String>): Boolean {
         return permissions.all { // 퍼미션 list 값을 비교함 {} 내부분이 조건 전부 매칭시 true
             ContextCompat.checkSelfPermission(mContext, it) == PackageManager.PERMISSION_GRANTED
             //퍼미션 체크 단계 it => permissions list
         }
     }
+
 
     constructor(context: Context?, msg: String?):this(context){
         this.mmsg = msg!!
@@ -41,7 +40,7 @@ class AppUtill(context: Context? ) {
                 val toast = Toast.makeText(mContext, mmsg, Toast.LENGTH_SHORT)
                 toast.show()
             } else {
-                val mSnackbar =Snackbar.make(mContext!!,view.findViewById(R.id.container),  mmsg,Toast.LENGTH_SHORT)
+                val mSnackbar =Snackbar.make(mContext!!,view.findViewById(R.id.drawer),  mmsg,Toast.LENGTH_SHORT)
                 mSnackbar.show()
             }
         }
@@ -57,7 +56,7 @@ class AppUtill(context: Context? ) {
                     toast.setGravity(gravity,xInt,yInt)
                     toast.show()
                 } else {
-                    val mSnackbar =Snackbar.make(mContext!!,view.findViewById(R.id.container),  mmsg,Toast.LENGTH_SHORT)
+                    val mSnackbar =Snackbar.make(mContext!!,view.findViewById(R.id.drawer),  mmsg,Toast.LENGTH_SHORT)
                     mSnackbar.show()
                 }
             }

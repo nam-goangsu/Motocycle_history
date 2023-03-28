@@ -6,12 +6,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Fts4
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
+
+
  
-
-
-@Entity(tableName = "SigunLowPrice", primaryKeys = ["rowid","UNI_ID","POOL_DIV_CD"]) // 시군구 최저가
+@Entity(tableName = "SigunLowPrice")//, primaryKeys = ["rowid"]) // 시군구 최저가
 data class SigunLowPrice(
-  //  @PrimaryKey(autoGenerate = true) //primary key는 자동으로 만들게 합니다.
+    @PrimaryKey(autoGenerate = true) //primary key는 자동으로 만들게 합니다.
     @ColumnInfo @NonNull
     val rowid: Long,
     @ColumnInfo @NonNull
